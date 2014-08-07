@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    android:id="@+id/prodEntry"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rice (25%)"
+        android:id="@+id/prodNameTV"
+        android:textSize="20sp"
+        android:layout_weight="0.75"
+        android:textIsSelectable="true"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.50"
+        android:id="@+id/prodPercTV"
+        android:textSize="20sp"
+        android:layout_weight="0.25"
+        android:gravity="right"
+        android:paddingTop="10dp" />
+</LinearLayout>

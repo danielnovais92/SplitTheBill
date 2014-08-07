@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/resultEntry"
+    android:paddingTop="25dp"
+    android:background="#ffdcdcdc">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Daniel has to pay €15.37"
+        android:id="@+id/resultTV"
+        android:textSize="25sp"
+        android:layout_weight="0.8" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/moreIB"
+        android:src="@drawable/ic_action_new"
+        android:background="@null"
+        android:layout_weight="0.2"
+        android:contentDescription="Add button" />
+</LinearLayout>
