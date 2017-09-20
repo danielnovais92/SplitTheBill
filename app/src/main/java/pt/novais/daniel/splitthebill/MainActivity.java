@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,10 +29,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Map<String, Person> people;
-    private ArrayList<LinearLayout> entryList = new ArrayList<LinearLayout>();
+    private ArrayList<LinearLayout> entryList = new ArrayList<>();
     private ScrollView scrlv;
     private LinearLayout root;
     private AdView adView;
@@ -47,7 +47,7 @@ public class MainActivity extends ActionBarActivity {
         adView.setAdUnitId(MY_AD_UNIT_ID);
         adView.setAdSize(AdSize.BANNER);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.adsLayoutMain);
+        LinearLayout layout = findViewById(R.id.adsLayoutMain);
         layout.addView(adView);
 
         AdRequest adRequest = new AdRequest.Builder()
@@ -57,11 +57,11 @@ public class MainActivity extends ActionBarActivity {
 
         adView.loadAd(adRequest);
 
-        people = new LinkedHashMap<String, Person>();
+        people = new LinkedHashMap<>();
 
-        scrlv = (ScrollView)findViewById(R.id.scrollV);
+        scrlv = findViewById(R.id.scrollV);
 
-        root = (LinearLayout) findViewById(R.id.root);
+        root = findViewById(R.id.root);
 
         newEntry(root);
         newEntry(root);
@@ -71,7 +71,7 @@ public class MainActivity extends ActionBarActivity {
     private void newEntry (LinearLayout root) {
         LayoutInflater mInf = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = mInf.inflate(R.layout.name_entry, root, false);
-        LinearLayout entry = (LinearLayout)v.findViewById(R.id.entry);
+        LinearLayout entry = v.findViewById(R.id.entry);
         entryList.add(entry);
         root.addView(entry);
         scrlv.fullScroll(View.FOCUS_DOWN);
@@ -91,11 +91,11 @@ public class MainActivity extends ActionBarActivity {
         Double total, each;
         total = 0.0;
         for (LinearLayout l : entryList) {
-            nameET = (EditText) l.findViewById(R.id.nameET);
+            nameET = l.findViewById(R.id.nameET);
             name = nameET.getText().toString();
 
             if (!name.matches("")) {
-                paidET = (EditText) l.findViewById(R.id.paidET);
+                paidET = l.findViewById(R.id.paidET);
                 if (!paidET.getText().toString().matches(""))
                     each = Double.parseDouble(paidET.getText().toString());
                 else
@@ -110,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
             }
 
         }
-        totalET = (EditText) findViewById(R.id.totalPaidET);
+        totalET = findViewById(R.id.totalPaidET);
         if (totalET.getText().toString().matches("") ||
                 total.compareTo(Double.parseDouble(totalET.getText().toString())) != 0 ||
                 people.size() < 2)
@@ -138,7 +138,7 @@ public class MainActivity extends ActionBarActivity {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(MainActivity.this);
         builderSingle.setIcon(R.drawable.ic_launcher);
         builderSingle.setTitle("Select Bill by Date:");
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 MainActivity.this,
                 android.R.layout.select_dialog_singlechoice);
 

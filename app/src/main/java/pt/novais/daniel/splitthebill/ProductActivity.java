@@ -3,7 +3,7 @@ package pt.novais.daniel.splitthebill;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 
-public class ProductActivity extends ActionBarActivity {
+public class ProductActivity extends AppCompatActivity {
 
     private Product product;
     private ArrayList<String> prodNames;
@@ -50,8 +50,8 @@ public class ProductActivity extends ActionBarActivity {
 
         prodNames = (ArrayList<String>)myIntent.getSerializableExtra("pNames");
 
-        LinearLayout root = (LinearLayout) findViewById(R.id.mainLayout);
-        nameLst = new HashMap<String,LinearLayout>();
+        LinearLayout root = findViewById(R.id.mainLayout);
+        nameLst = new HashMap<>();
         for (String name : people.keySet()) {
             nameLst.put(name, newEntry(root));
         }
@@ -75,8 +75,8 @@ public class ProductActivity extends ActionBarActivity {
         for (String name : nameLst.keySet()) {
             LinearLayout layout = nameLst.get(name);
 
-            checkbox = (CheckBox)layout.findViewById(R.id.checkBox);
-            seekBar = (SeekBar)layout.findViewById(R.id.seekBar);
+            checkbox = layout.findViewById(R.id.checkBox);
+            seekBar = layout.findViewById(R.id.seekBar);
 
             checkbox.setText(name);
 
@@ -121,8 +121,8 @@ public class ProductActivity extends ActionBarActivity {
     }
 
     private void populateUpd(Product p, HashMap<String,LinearLayout> nameLst) {
-        EditText productName = (EditText) findViewById(R.id.productNameET);
-        EditText productCost = (EditText) findViewById(R.id.productCostET);
+        EditText productName = findViewById(R.id.productNameET);
+        EditText productCost = findViewById(R.id.productCostET);
 
         productName.setText(p.getName());
         productCost.setText(p.getCost().toString());
@@ -132,8 +132,8 @@ public class ProductActivity extends ActionBarActivity {
         for (String name : nameLst.keySet()) {
             LinearLayout layout = nameLst.get(name);
 
-            checkbox = (CheckBox)layout.findViewById(R.id.checkBox);
-            seekBar = (SeekBar)layout.findViewById(R.id.seekBar);
+            checkbox = layout.findViewById(R.id.checkBox);
+            seekBar = layout.findViewById(R.id.seekBar);
 
             checkbox.setText(name);
             checkbox.setChecked(p.getChecks().get(name));
@@ -179,8 +179,8 @@ public class ProductActivity extends ActionBarActivity {
 
     private boolean newProduct (HashMap<String,LinearLayout> nameLst) {
 
-        EditText productName = (EditText) findViewById(R.id.productNameET);
-        EditText productCost = (EditText) findViewById(R.id.productCostET);
+        EditText productName = findViewById(R.id.productNameET);
+        EditText productCost = findViewById(R.id.productCostET);
 
         if (!upd) {
             if (prodNames.contains(productName.getText().toString())) {
@@ -191,13 +191,13 @@ public class ProductActivity extends ActionBarActivity {
 
         CheckBox checkBox;
         SeekBar seekBar;
-        HashMap<String,Boolean> check = new HashMap<String,Boolean>();
-        HashMap<String,Integer> seek = new HashMap<String,Integer>();
+        HashMap<String,Boolean> check = new HashMap<>();
+        HashMap<String,Integer> seek = new HashMap<>();
         for (String name : nameLst.keySet()) {
             LinearLayout layout = nameLst.get(name);
 
-            checkBox = (CheckBox) layout.findViewById(R.id.checkBox);
-            seekBar = (SeekBar) layout.findViewById(R.id.seekBar);
+            checkBox = layout.findViewById(R.id.checkBox);
+            seekBar = layout.findViewById(R.id.seekBar);
             check.put(name,checkBox.isChecked());
             seek.put(name,seekBar.getProgress());
 
@@ -238,7 +238,7 @@ public class ProductActivity extends ActionBarActivity {
     private LinearLayout newEntry (LinearLayout rootView) {
         LayoutInflater mInf = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = mInf.inflate(R.layout.amount_entry, rootView, false);
-        LinearLayout entry = (LinearLayout)v.findViewById(R.id.amountEntrie);
+        LinearLayout entry = v.findViewById(R.id.amountEntrie);
         rootView.addView(entry);
         return entry;
     }

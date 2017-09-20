@@ -2,25 +2,25 @@ package pt.novais.daniel.splitthebill;
 
 import java.io.Serializable;
 
-public class Person implements Serializable {
+class Person implements Serializable {
 
     private Double paid;
     private Double owes;
 
-    public Person(Double paid, Double owes) {
+    Person(Double paid, Double owes) {
         this.paid = paid;
         this.owes = owes;
     }
 
-    public Double getPaid() {
+    Double getPaid() {
         return this.paid;
     }
 
-    public Double getOwes() {
+    Double getOwes() {
         return this.owes;
     }
 
-    public void setOwes(Double owes) {
+    void setOwes(Double owes) {
         this.owes = owes;
     }
 }

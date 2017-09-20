@@ -2,13 +2,13 @@ package pt.novais.daniel.splitthebill;
 
 import java.io.Serializable;
 
-public class MiniProduct implements Serializable {
+class MiniProduct implements Serializable {
 
     private String name;
     private Double cost;
     private Double quantity;
 
-    public MiniProduct(String name, Double cost, Double quantity) {
+    MiniProduct(String name, Double cost, Double quantity) {
         this.name = name;
         this.cost = cost;
         this.quantity = quantity;
@@ -22,11 +22,11 @@ public class MiniProduct implements Serializable {
         this.name = name;
     }
 
-    public Double getCost() {
+    Double getCost() {
         return cost;
     }
 
-    public Double getQuantity() {
+    Double getQuantity() {
         return quantity;
     }
 }

@@ -3,7 +3,7 @@ package pt.novais.daniel.splitthebill;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +17,7 @@ import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 
-public class DetailsActivity extends ActionBarActivity {
+public class DetailsActivity extends AppCompatActivity {
 
     private LinearLayout root;
     private AdView adView;
@@ -32,7 +32,7 @@ public class DetailsActivity extends ActionBarActivity {
         adView.setAdUnitId(MY_AD_UNIT_ID);
         adView.setAdSize(AdSize.BANNER);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.adsLayoutDetails);
+        LinearLayout layout = findViewById(R.id.adsLayoutDetails);
         layout.addView(adView);
 
         AdRequest adRequest = new AdRequest.Builder()
@@ -46,7 +46,7 @@ public class DetailsActivity extends ActionBarActivity {
         ArrayList<MiniProduct> prods = (ArrayList<MiniProduct>)myIntent.getSerializableExtra("prods");
         Person prsn = (Person)myIntent.getSerializableExtra("prsn");
         String name = myIntent.getStringExtra("name");
-        root = (LinearLayout)findViewById(R.id.rootDetails);
+        root = findViewById(R.id.rootDetails);
 
         setTitle(name);
 
@@ -60,7 +60,7 @@ public class DetailsActivity extends ActionBarActivity {
             newEntry(mp.getName(), mp.getQuantity(), mp.getCost());
         }
 
-        TextView balance = (TextView)findViewById(R.id.balanceTV);
+        TextView balance = findViewById(R.id.balanceTV);
         double bal = round(prsn.getOwes() - prsn.getPaid());
 
         if (bal < 0 )
@@ -76,9 +76,9 @@ public class DetailsActivity extends ActionBarActivity {
     private void newEntry (String prodName, double perc, double cost) {
         LayoutInflater mInf = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = mInf.inflate(R.layout.details_entry, root, false);
-        LinearLayout entry = (LinearLayout)v.findViewById(R.id.prodEntry);
+        LinearLayout entry = v.findViewById(R.id.prodEntry);
 
-        TextView pName = (TextView)entry.findViewById(R.id.prodNameTV);
+        TextView pName = entry.findViewById(R.id.prodNameTV);
         pName.setText(prodName + " (" + round(cost * (perc * 0.01)) + ") ");
         TextView percentage = (TextView)entry.findViewById(R.id.prodPercTV);
         percentage.setText(round(perc) + "%");

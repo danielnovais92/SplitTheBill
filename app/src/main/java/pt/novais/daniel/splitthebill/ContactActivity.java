@@ -2,7 +2,7 @@ package pt.novais.daniel.splitthebill;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +14,7 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
-public class ContactActivity extends ActionBarActivity {
+public class ContactActivity extends AppCompatActivity {
 
     private AdView adView;
     private static final String MY_AD_UNIT_ID = "ca-app-pub-9369931784095626/8925003191";
@@ -40,7 +40,7 @@ public class ContactActivity extends ActionBarActivity {
         // Começar a carregar o anúncio intersticial.
         interstitial.loadAd(adRequest);
 
-        Button ad = (Button)findViewById(R.id.adButton);
+        Button ad = findViewById(R.id.adButton);
         ad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +52,7 @@ public class ContactActivity extends ActionBarActivity {
         adView.setAdUnitId(MY_AD_UNIT_ID);
         adView.setAdSize(AdSize.LARGE_BANNER);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.adsLayoutContact);
+        LinearLayout layout = findViewById(R.id.adsLayoutContact);
         layout.addView(adView);
 
         adView.loadAd(adRequest);

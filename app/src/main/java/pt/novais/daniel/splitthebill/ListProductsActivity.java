@@ -3,7 +3,7 @@ package pt.novais.daniel.splitthebill;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ListProductsActivity extends ActionBarActivity {
+public class ListProductsActivity extends AppCompatActivity {
 
     private Map<String, Person> people;
     private ArrayList<Product> products;
@@ -44,9 +44,9 @@ public class ListProductsActivity extends ActionBarActivity {
 
         total = myIntent.getDoubleExtra("tots", 0.0);
 
-        products = new ArrayList<Product>();
-        productList = new ArrayList<LinearLayout>();
-        root = (LinearLayout) findViewById(R.id.rootListProd);
+        products = new ArrayList<>();
+        productList = new ArrayList<>();
+        root = findViewById(R.id.rootListProd);
         UPDATE = false;
         UPDATE_ID = -1;
 
@@ -59,14 +59,14 @@ public class ListProductsActivity extends ActionBarActivity {
     private void  populate() {
         TextView pName, pPrice, subTotal;
 
-        subTotal = (TextView)findViewById(R.id.subTotal);
+        subTotal = findViewById(R.id.subTotal);
         subTotal.setText("€" + subTotal());
 
         for (int i = 0; i < productList.size(); i++) {
             LinearLayout l = productList.get(i);
 
-            pName = (TextView)l.findViewById(R.id.productNameList);
-            pPrice = (TextView)l.findViewById(R.id.productPriceList);
+            pName = l.findViewById(R.id.productNameList);
+            pPrice = l.findViewById(R.id.productPriceList);
 
             pName.setText(products.get(i).getName());
             pPrice.setText("€" + products.get(i).getCost());
@@ -123,7 +123,7 @@ public class ListProductsActivity extends ActionBarActivity {
     private void newEntry () {
         LayoutInflater mInf = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = mInf.inflate(R.layout.product_entry, root, false);
-        LinearLayout entry = (LinearLayout)v.findViewById(R.id.productEntry);
+        LinearLayout entry = v.findViewById(R.id.productEntry);
         productList.add(entry);
         root.addView(entry);
     }
@@ -161,7 +161,7 @@ public class ListProductsActivity extends ActionBarActivity {
 
         switch (item.getItemId()) {
             case R.id.action_new:
-                ArrayList<String> prodNames = new ArrayList<String>();
+                ArrayList<String> prodNames = new ArrayList<>();
                 for (Product p :products) {
                     prodNames.add(p.getName());
                 }

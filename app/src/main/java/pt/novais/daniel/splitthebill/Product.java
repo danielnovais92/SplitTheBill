@@ -4,7 +4,7 @@ package pt.novais.daniel.splitthebill;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Product implements Serializable {
+class Product implements Serializable {
     // instance variables - replace the example below with your own
     private String name;
     private Double cost;
@@ -12,7 +12,7 @@ public class Product implements Serializable {
     private HashMap<String,Integer> seeks; //<person_name,seek_bar_%>
 
 
-    public Product(String name, Double cost, HashMap<String, Boolean> checks, HashMap<String, Integer> seeks) {
+    Product(String name, Double cost, HashMap<String, Boolean> checks, HashMap<String, Integer> seeks) {
         this.name = name;
         this.cost = cost;
         this.checks = checks;
@@ -27,7 +27,7 @@ public class Product implements Serializable {
         this.cost = cost;
     }
 
-    public HashMap<String, Boolean> getChecks() {
+    HashMap<String, Boolean> getChecks() {
         return checks;
     }
 
@@ -35,7 +35,7 @@ public class Product implements Serializable {
         this.checks = checks;
     }
 
-    public HashMap<String, Integer> getSeeks() {
+    HashMap<String, Integer> getSeeks() {
         return seeks;
     }
 
@@ -47,7 +47,7 @@ public class Product implements Serializable {
         return this.name;
     }
 
-    public Double getCost() {
+    Double getCost() {
         return this.cost;
     }
 
